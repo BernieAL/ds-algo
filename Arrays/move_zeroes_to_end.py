@@ -138,6 +138,7 @@ def move_zeros_optimized(nums):
     if i == len(nums):
         return nums
     
+    ip = i
     #FINDING NON ZERO ELEMENTS 
     # look for non-zero elements that occur after first zero
     for j in range(i+1,len(nums)):
@@ -146,7 +147,7 @@ def move_zeros_optimized(nums):
         if nums[j] != 0:
             nums[j], nums[ip] = nums[ip],nums[j]
 
-            #SEARCH FOR NEXT 0
+            #SEARCH FOR NEXT insertion_point -> search for next 0
             # move ip forward until we hit a 0 again
             #this is necessary because when we advance ip, it could land on non-zero
             #and we cant insert on a non-zero element's place, so we must find next 0
@@ -166,23 +167,4 @@ def move_zeros_optimized(nums):
 
 
 
-    #check if array is empty
-    #find first 0, this is our first insertion point for non zero element
-    for i in range(len(nums)):
-        if nums[i] == 0:
-            ip = i
-            break
-    
-    #now look for non zero elements, swap to ip position
-    #once we swap, go on to look for next 0 which is next ip
-    for j in range(i+1,len(nums)):
-        if nums[j] != 0:
-            nums[j],nums[ip] = nums[ip],nums[j]
-
-            #move ip forward until we hit a 0 again
-            # cases for ip, it can be non zero or zero
-            # if non zero, this is no good for us, we need a 0
-            # move it forward til we get a 0, then resume the for loop    
-            while nums[ip] != 0:
-                ip+=1
-        
+   
