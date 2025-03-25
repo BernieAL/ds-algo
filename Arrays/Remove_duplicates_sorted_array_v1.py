@@ -149,8 +149,8 @@ def remove_dup_sorted_array(nums):
         #overwrite the val at this index with 'x'
         if nums[i] not in num_set:
             nums[i] = 'x'
+
         #if this is the first time we this num, remove it from the set to mark as seen
-        
         elif nums[i] in num_set:
             num_set.remove(nums[i])
 
@@ -168,7 +168,6 @@ def remove_dup_sorted_array(nums):
     j = 0
     while j < len(nums) and nums[j] != 'x':
         j+=1
-    
     ip = j
     
     #SWAP - X with non X (duplicate with non duplicate)
